@@ -1472,7 +1472,7 @@ section {
   top: 15px;
   padding: 0.5rem 1rem;
   background: rgba(0, 0, 0, 0.6);
-  color: var(--white);
+  color: #ffffff;
   font-weight: 600;
   font-size: 0.85rem;
   text-transform: uppercase;
