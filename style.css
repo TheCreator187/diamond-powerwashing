@@ -2038,14 +2038,21 @@ footer::before {
   }
 
   /* Mobile Intro Section */
+  .intro-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.25;
+    font-weight: 700;
+  }
+  
   .intro-content {
     text-align: left;
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.55;
   }
   
   .intro-content p {
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.75rem;
   }
 
   .intro-buttons {
@@ -2180,6 +2187,7 @@ footer::before {
   .comparison-label {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
+    color: #ffffff;
   }
 
   /* Mobile Features */
