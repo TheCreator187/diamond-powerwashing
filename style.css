@@ -1784,6 +1784,16 @@ footer::before {
   nav {
     padding: clamp(0.75rem, 0.5rem + 1vw, 1rem) var(--space-sm);
     flex-wrap: wrap;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Hide header on scroll down, show on scroll up */
+  nav.header-hidden {
+    transform: translateY(-100%);
+  }
+  
+  nav.header-visible {
+    transform: translateY(0);
   }
   
   .logo-container {

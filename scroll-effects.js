@@ -3,6 +3,44 @@
 // Mobile detection for performance optimization
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
 
+// Mobile header hide/show on scroll
+if (isMobile) {
+    let lastScrollTop = 0;
+    let scrollTimeout;
+    const header = document.querySelector('nav');
+    const scrollThreshold = 10; // Minimum scroll distance to trigger
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        
+        scrollTimeout = setTimeout(() => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Don't hide header at the very top
+            if (currentScroll <= 100) {
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
+                lastScrollTop = currentScroll;
+                return;
+            }
+            
+            // Check scroll direction
+            if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
+                if (currentScroll > lastScrollTop) {
+                    // Scrolling down - hide header
+                    header.classList.add('header-hidden');
+                    header.classList.remove('header-visible');
+                } else {
+                    // Scrolling up - show header
+                    header.classList.remove('header-hidden');
+                    header.classList.add('header-visible');
+                }
+                lastScrollTop = currentScroll;
+            }
+        }, 10);
+    }, { passive: true });
+}
+
 // Parallax effect for hero video (desktop only for performance)
 if (!isMobile) {
     let ticking = false;
