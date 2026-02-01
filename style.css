@@ -1780,20 +1780,28 @@ footer::before {
     --space-md: clamp(1.5rem, 1.3rem + 1vw, 2rem);
   }
   
+  /* Mobile Header - Hide on scroll */
+  header {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  header.header-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  header.header-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
   /* Mobile Navigation - Enhanced Touch Targets */
   nav {
     padding: clamp(0.75rem, 0.5rem + 1vw, 1rem) var(--space-sm);
     flex-wrap: wrap;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* Hide header on scroll down, show on scroll up */
-  nav.header-hidden {
-    transform: translateY(-100%);
-  }
-  
-  nav.header-visible {
-    transform: translateY(0);
   }
   
   .logo-container {
@@ -1808,7 +1816,7 @@ footer::before {
   }
   
   .logo-text {
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
   }
 
   .top-bar {
@@ -1825,8 +1833,8 @@ footer::before {
   }
 
   .phone-link {
-    font-size: var(--text-base);
-    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.85rem;
     background: rgba(0, 174, 239, 0.1);
     border-radius: var(--radius-lg);
     min-height: 44px;
@@ -1836,8 +1844,8 @@ footer::before {
   }
 
   .header-button {
-    padding: 0.75rem 1.5rem;
-    font-size: var(--text-sm);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
     min-height: 44px;
     display: flex;
     align-items: center;

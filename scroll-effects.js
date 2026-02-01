@@ -7,7 +7,7 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 if (isMobile) {
     let lastScrollTop = 0;
     let scrollTimeout;
-    const header = document.querySelector('nav');
+    const header = document.querySelector('header');
     const scrollThreshold = 10; // Minimum scroll distance to trigger
     
     window.addEventListener('scroll', () => {
