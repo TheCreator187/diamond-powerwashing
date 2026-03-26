@@ -790,21 +790,47 @@
                 handle.style.left = pct + '%';
             }
 
-            // Touch — use non-passive so we can prevent page scroll while dragging
+            // Touch — evaluate direction to allow vertical page scrolling
+            let startX = 0, startY = 0, isScrolling = false, isTouchDrag = false;
+            let axisLocked = false;
+
             track.addEventListener('touchstart', e => {
-                dragging = true;
-                setPosition(e.touches[0].clientX);
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                isScrolling = false;
+                isTouchDrag = true;
+                axisLocked = false;
             }, { passive: true });
 
             track.addEventListener('touchmove', e => {
-                if (dragging) {
-                    e.preventDefault(); // stop the page from scrolling while using the slider
-                    setPosition(e.touches[0].clientX);
+                if (!isTouchDrag) return;
+                
+                let curX = e.touches[0].clientX;
+                let curY = e.touches[0].clientY;
+                
+                let diffX = Math.abs(curX - startX);
+                let diffY = Math.abs(curY - startY);
+
+                // Lock the axis detection after moving 5px
+                if (!axisLocked && (diffX > 5 || diffY > 5)) {
+                    if (diffY > diffX) {
+                        isScrolling = true; // Mostly vertical = scrolling
+                    }
+                    axisLocked = true; // Decision made for this touch
                 }
+
+                if (isScrolling) {
+                    return; // Let browser scroll the page
+                }
+
+                // If axis is locked and it's NOT scrolling, or we haven't hit 5px yet,
+                // we preventDefault to stop page bounce and move the slider.
+                if (e.cancelable) e.preventDefault();
+                setPosition(curX);
             }, { passive: false });
 
-            track.addEventListener('touchend', () => { dragging = false; });
-            track.addEventListener('touchcancel', () => { dragging = false; });
+            track.addEventListener('touchend', () => { isTouchDrag = false; });
+            track.addEventListener('touchcancel', () => { isTouchDrag = false; });
 
             // Mouse
             track.addEventListener('mousedown', e => {
