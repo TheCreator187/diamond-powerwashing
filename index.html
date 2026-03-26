@@ -3,386 +3,856 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <meta name="description" content="#1 Rated Pressure Washing Company - Professional power washing, soft washing, and commercial cleaning services. Built on trust, quality, and integrity.">
-    <meta name="theme-color" content="#00aeef" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#001a33" media="(prefers-color-scheme: dark)">
-    <meta name="color-scheme" content="light dark">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Diamond Pressure Powerwash - #1 Rated Pressure Washing Company</title>
+    <meta name="description" content="Diamond Pressure Powerwash — NYC's #1 rated pressure washing company. Professional power washing, soft washing, roof cleaning, and commercial cleaning services. Built on trust, quality, and integrity.">
+    <meta name="keywords" content="pressure washing NYC, power washing New York, soft washing, commercial cleaning, driveway cleaning, roof cleaning">
+    <meta name="theme-color" content="#0a0f1a">
+    <meta property="og:title" content="Diamond Pressure Powerwash | #1 NYC Pressure Washing">
+    <meta property="og:description" content="Professional pressure & soft washing services across New York City. 500+ satisfied clients.">
+    <meta property="og:type" content="website">
+    <title>Diamond Pressure Powerwash | #1 Rated NYC Pressure Washing Company</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    <script src="scroll-effects.js" defer></script>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <a href="tel:5555551234" class="top-phone">CALL US TODAY: (555) 555-1234</a>
+
+    <!-- ═══════════════════════════════════════════
+         ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════ -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="announcement-inner">
+            <span class="announcement-dot"></span>
+            <span>Serving all 5 NYC Boroughs &nbsp;|&nbsp; <strong>Free Estimates</strong> &nbsp;|&nbsp; Same-Week Availability</span>
+            <a href="tel:5555551234" class="announcement-phone">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                (555) 555-1234
+            </a>
         </div>
     </div>
 
-    <!-- Header & Navigation -->
+    <!-- ═══════════════════════════════════════════
+         HEADER
+    ═══════════════════════════════════════════ -->
     <header id="header" role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <div class="logo-container">
-                <img src="assets /logo.png" alt="Diamond Pressure Powerwash Logo">
-                <span class="logo-text">Diamond Pressure Powerwash</span>
-            </div>
-            <div class="header-cta">
-                <a href="tel:5555551234" class="phone-link" aria-label="Call us at (555) 555-1234">(555) 555-1234</a>
-                <a href="#contact" class="header-button">GET A FREE ESTIMATE</a>
-            </div>
+        <nav class="nav-inner" role="navigation" aria-label="Main navigation">
+            <a href="#home" class="nav-logo" aria-label="Diamond Pressure Powerwash Home">
+                <img src="assets /logo.png" alt="Diamond Pressure Powerwash" class="logo-img">
+                <div class="logo-text-group">
+                    <span class="logo-primary">Diamond</span>
+                    <span class="logo-secondary">Pressure Powerwash</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks" role="list">
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link">Results</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link nav-link--cta">Get a Quote</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ═══════════════════════════════════════════
+         HERO SECTION — Clean Split Layout
+    ═══════════════════════════════════════════ -->
     <section id="home" class="hero" aria-labelledby="hero-title">
-        <!-- Video Background -->
-        <div class="hero-video-container">
-            <video 
-                id="heroVideo"
-                autoplay 
-                muted 
-                loop 
-                playsinline
-                poster="assets /Projects -images -before-after/after-9.jpg">
-                <source src="assets /Project-vids/VID_20260201_130250.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay-gradient"></div>
+
+        <!-- Animated bg -->
+        <div class="hero-bg" aria-hidden="true">
+            <div class="hero-bg__orb hero-bg__orb--1"></div>
+            <div class="hero-bg__orb hero-bg__orb--2"></div>
+            <div class="hero-bg__orb hero-bg__orb--3"></div>
+            <div class="hero-bg__grid"></div>
         </div>
-        
-        <!-- Animated gradient mesh background -->
-        <div class="gradient-mesh" aria-hidden="true">
-            <div class="mesh-blob blob-1"></div>
-            <div class="mesh-blob blob-2"></div>
-            <div class="mesh-blob blob-3"></div>
-        </div>
-        
-        <!-- Floating geometric shapes -->
-        <div class="floating-shapes" aria-hidden="true">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
-        </div>
-        
-        <div class="hero-content">
-            <!-- Trust badges -->
-            <div class="hero-badges">
-                <div class="badge badge-animated">
-                    <span class="badge-icon">⭐</span>
-                    <span class="badge-text">5-Star Rated</span>
+
+        <div class="hero-split">
+
+            <!-- LEFT: Content -->
+            <div class="hero-left">
+                <div class="hero-eyebrow">
+                    <span class="eyebrow-pill">
+                        <span class="eyebrow-dot"></span>
+                        NYC's Premier Wash Specialists
+                    </span>
                 </div>
-                <div class="badge badge-animated">
-                    <span class="badge-icon">✓</span>
-                    <span class="badge-text">Licensed & Insured</span>
+
+                <h1 id="hero-title" class="hero-title">
+                    <span class="title-word">We Make</span>
+                    <span class="title-word title-accent">Everything</span>
+                    <span class="title-word">Shine.</span>
+                </h1>
+
+                <p class="hero-subtitle">Professional pressure washing, soft washing &amp; commercial cleaning across all five New York City boroughs. Built on trust, quality &amp; integrity.</p>
+
+                <div class="hero-trust">
+                    <div class="trust-badge">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        5-Star Rated
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        Licensed &amp; Insured
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        Satisfaction Guaranteed
+                    </div>
                 </div>
-                <div class="badge badge-animated">
-                    <span class="badge-icon">🏆</span>
-                    <span class="badge-text">#1 in Area</span>
+
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn--primary btn--xl" id="hero-cta">
+                        Get My Free Estimate
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="tel:5555551234" class="btn btn--ghost btn--xl">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        (555) 555-1234
+                    </a>
+                </div>
+
+                <!-- Inline stats -->
+                <div class="hero-stats-inline" aria-label="Company statistics">
+                    <div class="hero-stat-inline">
+                        <span class="stat-num" data-count="500">500<span>+</span></span>
+                        <span class="stat-lbl">Happy Clients</span>
+                    </div>
+                    <div class="stat-sep" aria-hidden="true"></div>
+                    <div class="hero-stat-inline">
+                        <span class="stat-num" data-count="1200">1,200<span>+</span></span>
+                        <span class="stat-lbl">Jobs Done</span>
+                    </div>
+                    <div class="stat-sep" aria-hidden="true"></div>
+                    <div class="hero-stat-inline">
+                        <span class="stat-num" data-count="10">10<span>+</span></span>
+                        <span class="stat-lbl">Years</span>
+                    </div>
+                    <div class="stat-sep" aria-hidden="true"></div>
+                    <div class="hero-stat-inline">
+                        <span class="stat-num">5</span>
+                        <span class="stat-lbl">Boroughs</span>
+                    </div>
                 </div>
             </div>
-            
-            <h1 id="hero-title" class="hero-title-gradient">
-                <span class="title-line">#1 Rated Pressure Washing</span>
-                <span class="title-line">Company In Your Area</span>
-            </h1>
-            <p class="tagline">Built On Trust, Quality, & Integrity</p>
-            
-            <!-- Stats counter -->
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="500">500+</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="1000">1000+</div>
-                    <div class="stat-label">Projects Done</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="10">10+</div>
-                    <div class="stat-label">Years Experience</div>
+
+            <!-- RIGHT: Photo showcase -->
+            <div class="hero-right" aria-hidden="true">
+                <div class="hero-photo-wrap">
+                    <div class="hero-photo-frame">
+                        <img
+                            src="assets /Projects -images -before-after/after-9.jpg"
+                            alt="Professional pressure washing result — clean driveway"
+                            class="hero-photo"
+                            loading="eager"
+                            decoding="async"
+                        >
+                        <!-- After badge -->
+                        <div class="hero-photo-badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            Spotless results
+                        </div>
+                    </div>
+                    <!-- Floating accent card -->
+                    <div class="hero-accent-card">
+                        <img
+                            src="assets /Projects -images -before-after/after-4.jpg"
+                            alt="Another cleaning result"
+                            class="hero-accent-img"
+                            loading="lazy"
+                        >
+                    </div>
                 </div>
             </div>
-            
-            <div class="hero-buttons">
-                <a href="#contact" class="cta-button cta-pulse">GET A FREE ESTIMATE</a>
-                <a href="tel:5555551234" class="cta-button-secondary" aria-label="Call us at (555) 555-1234">(555) 555-1234</a>
-            </div>
+
         </div>
-        
-        <!-- Scroll indicator -->
-        <div class="scroll-indicator" aria-hidden="true">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span class="scroll-text">Scroll to explore</span>
-        </div>
-        
-        <div class="wave" aria-hidden="true"></div>
     </section>
 
-    <!-- Intro Section -->
-    <section id="intro" class="intro-section">
+    <!-- ═══════════════════════════════════════════
+         SERVICES SECTION
+    ═══════════════════════════════════════════ -->
+    <section id="services" class="services-section" aria-labelledby="services-title">
         <div class="container">
-            <div class="intro-label">DON'T LET THE STAINS STICK AROUND</div>
-            <h2 class="section-title">#1 Rated Pressure Washing Company In Your Area</h2>
-            <h3 class="intro-subtitle">Experience the Results of a Fresh Clean</h3>
-            
-            <div class="intro-content">
-                <p>Is your home, roof, or concrete dirty? Has the appeal and beauty left your property because of the disgusting dirt living on it? Unfortunately, once dirt begins to accumulate on the exterior of your home, its beauty and cleanliness will disappear.</p>
-                
-                <p>Fortunately, Diamond Pressure Powerwash can help you restore the beauty of your home with a professional soft and pressure wash. Our hard-working and dedicated pressure-washing professionals are experienced and licensed at making homes and businesses look amazing.</p>
-                
-                <p>Once our pressure-washing professionals arrive they will start off your excellent experience by coming out and walking around the property to remove any debris or dirt. This is to make sure you are provided with thorough and professional cleaning. Our pressure-washing professional will treat your home with great respect during the pressure-washing process and once the cleaning is done, they will clean up any mess made.</p>
-                
-                <p>We strive to be the best at what we do with our revolutionary softwash techniques and procedures. Call today and you will see why we are the most reliable and safe company that fits your home exterior care needs.</p>
+            <div class="section-header">
+                <span class="section-eyebrow">What We Do</span>
+                <h2 id="services-title" class="section-title">Professional Services<br><span class="text-gradient">Built for NYC</span></h2>
+                <p class="section-desc">From residential driveways to commercial storefronts — we handle every surface with precision and care.</p>
             </div>
-            
-            <div class="intro-buttons">
-                <a href="#contact" class="cta-button">GET A FREE ESTIMATE</a>
-                <a href="tel:5555551234" class="cta-button-secondary">(555) 555-1234</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="scroll-reveal">
-        <div class="container">
-            <div class="section-label">SERVICES</div>
-            <h2 class="section-title">What We Offer</h2>
-            
             <div class="services-grid">
-                <div class="service-card scroll-item">
-                    <h3>PRESSURE WASHING</h3>
-                    <p>Remove stubborn dirt, grime, and stains from concrete surfaces. Professional driveway and walkway cleaning.</p>
+
+                <div class="service-card service-card--featured" data-service="pressure">
+                    <div class="service-card__bg" style="background-image: url('assets /Projects -images -before-after/after-4.jpg')"></div>
+                    <div class="service-card__overlay"></div>
+                    <div class="service-card__content">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 16.5c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v7.5c0 1.1-.9 2-2 2H7z"/><path d="M12 16.5v3m-3 0h6"/><path d="M8 7h2m4 0h2M8 10h8M8 13h5"/></svg>
+                        </div>
+                        <h3 class="service-card__title">Pressure Washing</h3>
+                        <p class="service-card__desc">High-pressure cleaning for concrete, driveways, sidewalks, fences, and hard surfaces. Removes years of staining in minutes.</p>
+                        <a href="#contact" class="service-card__link">
+                            Book Now
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="service-card scroll-item">
-                    <h3>SOFT WASHING</h3>
-                    <p>Safe and effective cleaning for your home's exterior. Gentle on surfaces, tough on dirt and mold.</p>
+
+                <div class="service-card" data-service="soft">
+                    <div class="service-card__bg" style="background-image: url('assets /Projects -images -before-after/after-6.jpg')"></div>
+                    <div class="service-card__overlay"></div>
+                    <div class="service-card__content">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a9 9 0 0 1 9 9c0 5-9 13-9 13S3 16 3 11a9 9 0 0 1 9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+                        </div>
+                        <h3 class="service-card__title">Soft Washing</h3>
+                        <p class="service-card__desc">Low-pressure, chemical-based cleaning safe for roofs, siding, stucco, and delicate surfaces. Kills mold at the root.</p>
+                        <a href="#contact" class="service-card__link">
+                            Book Now
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="service-card scroll-item">
-                    <h3>COMMERCIAL CLEANING</h3>
-                    <p>Maintain your professional image with expert commercial pressure washing for businesses and properties.</p>
+
+                <div class="service-card" data-service="roof">
+                    <div class="service-card__bg" style="background-image: url('assets /Projects -images -before-after/after-8.jpg')"></div>
+                    <div class="service-card__overlay"></div>
+                    <div class="service-card__content">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5L12 4l9 6.5V21H3V10.5z"/><path d="M9 21V15h6v6"/></svg>
+                        </div>
+                        <h3 class="service-card__title">Roof Cleaning</h3>
+                        <p class="service-card__desc">Professionally treated roof washing that removes black streaks, algae, lichen, and moss without damage to shingles.</p>
+                        <a href="#contact" class="service-card__link">
+                            Book Now
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </div>
+
+                <div class="service-card" data-service="commercial">
+                    <div class="service-card__bg" style="background-image: url('assets /Projects -images -before-after/after-10.jpg')"></div>
+                    <div class="service-card__overlay"></div>
+                    <div class="service-card__content">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                        </div>
+                        <h3 class="service-card__title">Commercial Cleaning</h3>
+                        <p class="service-card__desc">Large-scale exterior cleaning for storefronts, warehouses, parking lots, and commercial properties across all five boroughs.</p>
+                        <a href="#contact" class="service-card__link">
+                            Book Now
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section with Before/After -->
-    <section id="gallery" class="scroll-reveal">
+    <!-- ═══════════════════════════════════════════
+         ABOUT / WHY US SECTION
+    ═══════════════════════════════════════════ -->
+    <section id="about" class="about-section" aria-labelledby="about-title">
         <div class="container">
-            <div class="section-label">RESULTS</div>
-            <h2 class="section-title">Before & After Transformations</h2>
-            
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Gallery items will be dynamically inserted here -->
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-img-stack">
+                        <img src="assets /Projects -images -before-after/after-2.jpg" alt="Professional pressure washing result" class="about-img about-img--main" loading="lazy">
+                        <img src="assets /Projects -images -before-after/after-5.jpg" alt="Clean driveway after washing" class="about-img about-img--accent" loading="lazy">
+                        <div class="about-badge-float">
+                            <span class="floatbadge-num">10+</span>
+                            <span class="floatbadge-label">Years of Excellence</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <span class="section-eyebrow">Why Diamond</span>
+                    <h2 id="about-title" class="section-title">NYC's Most Trusted<br><span class="text-gradient">Wash Professionals</span></h2>
+                    <p class="about-lead">We don't just clean surfaces — we restore pride. Diamond Pressure Powerwash was founded on the belief that every property deserves to look its best, and we've been proving that across New York City for over a decade.</p>
+
+                    <ul class="about-features" role="list">
+                        <li class="about-feature">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            </div>
+                            <div>
+                                <strong>Fully Licensed &amp; Insured</strong>
+                                <span>We carry full liability coverage so your property is protected at all times.</span>
+                            </div>
+                        </li>
+                        <li class="about-feature">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            </div>
+                            <div>
+                                <strong>Eco-Friendly Solutions</strong>
+                                <span>Our biodegradable detergents are safe for your family, pets, and plants.</span>
+                            </div>
+                        </li>
+                        <li class="about-feature">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            </div>
+                            <div>
+                                <strong>Same-Week Scheduling</strong>
+                                <span>We work around your schedule with fast response and flexible booking.</span>
+                            </div>
+                        </li>
+                        <li class="about-feature">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                            </div>
+                            <div>
+                                <strong>100% Satisfaction Guarantee</strong>
+                                <span>We're not done until you're completely happy with the results.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn--primary">Schedule a Walkthrough</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="scroll-reveal">
+    <!-- ═══════════════════════════════════════════
+         GALLERY / BEFORE & AFTER
+    ═══════════════════════════════════════════ -->
+    <section id="gallery" class="gallery-section" aria-labelledby="gallery-title">
         <div class="container">
-            <div class="section-label">CONTACT US TODAY</div>
-            <h2 class="section-title">Built On Trust, Quality, & Integrity</h2>
-            
-            <div class="contact-content">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Needed</label>
-                        <input type="text" id="service" name="service" placeholder="e.g., Driveway Cleaning">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell us about your project..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
+            <div class="section-header section-header--center">
+                <span class="section-eyebrow">Real Results</span>
+                <h2 id="gallery-title" class="section-title">Before &amp; After<br><span class="text-gradient">Transformations</span></h2>
+                <p class="section-desc">Drag the slider to reveal the transformation. Every job is a Diamond job.</p>
+            </div>
 
-                <div class="contact-info">
-                    <div class="info-section">
-                        <h3>Location</h3>
-                        <p>Your City, Your State 12345</p>
-                        <p>Monday to Saturday: 07:00 AM — 05:00 PM</p>
+            <div class="gallery-grid" id="galleryGrid" aria-label="Before and after gallery"></div>
+
+            <div class="gallery-more">
+                <p class="gallery-more-text">And many more projects across New York City...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PROCESS SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="process-section" aria-labelledby="process-title">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-eyebrow">How It Works</span>
+                <h2 id="process-title" class="section-title">Simple. Fast. <span class="text-gradient">Spotless.</span></h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Free Estimate</h3>
+                        <p>Call or fill out our form. We'll assess your property and send a no-obligation quote — usually within hours.</p>
                     </div>
-                    <div class="info-section">
-                        <h3>Contact Information</h3>
-                        <p><a href="tel:5555551234">(555) 555-1234</a></p>
-                        <p><a href="mailto:info@diamondpowerwashing.com">info@diamondpowerwashing.com</a></p>
+                </div>
+                <div class="process-connector" aria-hidden="true"></div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>We Schedule</h3>
+                        <p>Pick a date that works for you. We arrive on time, fully equipped, ready to work.</p>
+                    </div>
+                </div>
+                <div class="process-connector" aria-hidden="true"></div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Deep Clean</h3>
+                        <p>Our professionals treat every inch of your property with precision tools and proven techniques.</p>
+                    </div>
+                </div>
+                <div class="process-connector" aria-hidden="true"></div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>You're Amazed</h3>
+                        <p>We clean up, do a final walkthrough with you, and won't leave until you're 100% satisfied.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Diamond Pressure Powerwash</div>
-            <p class="footer-text">Professional power washing services you can trust</p>
-            
-            <div class="social-links">
-                <a href="#" class="social-link" aria-label="Facebook">📘</a>
-                <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+    <!-- ═══════════════════════════════════════════
+         TESTIMONIALS
+    ═══════════════════════════════════════════ -->
+    <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-title">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-eyebrow">Client Reviews</span>
+                <h2 id="testimonials-title" class="section-title">What NYC Says<br><span class="text-gradient">About Us</span></h2>
             </div>
-            
-            <p class="copyright">&copy; 2026 Diamond Pressure Powerwash. All rights reserved.</p>
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    <blockquote class="testimonial-text">"Diamond completely transformed my driveway. It looked brand new! The team was professional, fast, and very thorough. I'll definitely be calling them again next year."</blockquote>
+                    <footer class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div>
+                            <strong>Marcus R.</strong>
+                            <span>Brooklyn, NY</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="testimonial-card testimonial-card--featured">
+                    <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    <blockquote class="testimonial-text">"I own a restaurant in Queens and my sidewalk was embarrassing. One call to Diamond and it was immaculate by the end of the day. Highly, highly recommend for any business owner."</blockquote>
+                    <footer class="testimonial-author">
+                        <div class="author-avatar">SL</div>
+                        <div>
+                            <strong>Sandra L.</strong>
+                            <span>Queens, NY</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    <blockquote class="testimonial-text">"Our roof had black streaks all over it for years. Diamond soft washed it and every streak is gone. It literally looks like a new house. My neighbors keep complimenting us."</blockquote>
+                    <footer class="testimonial-author">
+                        <div class="author-avatar">TW</div>
+                        <div>
+                            <strong>Tony W.</strong>
+                            <span>Staten Island, NY</span>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+            <div class="rating-summary" aria-label="Overall rating">
+                <div class="rating-stars" aria-hidden="true">★★★★★</div>
+                <div class="rating-details">
+                    <strong>4.9 / 5.0</strong>
+                    <span>Based on 200+ verified reviews</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA BANNER
+    ═══════════════════════════════════════════ -->
+    <section class="cta-section" aria-labelledby="cta-title">
+        <div class="cta-bg" aria-hidden="true">
+            <img src="assets /Projects -images -before-after/after-12.jpg" alt="" loading="lazy">
+            <div class="cta-bg-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 id="cta-title" class="cta-title">Ready to See the Difference?</h2>
+                <p class="cta-subtitle">Join 500+ satisfied NYC property owners. Get your free estimate today — no pressure, no obligation.</p>
+                <div class="cta-actions">
+                    <a href="#contact" class="btn btn--primary btn--xl">Get Free Estimate</a>
+                    <a href="tel:5555551234" class="btn btn--white btn--xl">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        Call (555) 555-1234
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT SECTION
+    ═══════════════════════════════════════════ -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <span class="section-eyebrow">Get In Touch</span>
+                    <h2 id="contact-title" class="section-title">Let's Restore<br><span class="text-gradient">Your Property</span></h2>
+                    <p class="contact-intro">Fill out the form and we'll get back to you within a few hours with a free, no-obligation estimate.</p>
+
+                    <div class="contact-details">
+                        <a href="tel:5555551234" class="contact-detail-item">
+                            <div class="contact-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            </div>
+                            <div>
+                                <span class="detail-label">Phone</span>
+                                <strong>(555) 555-1234</strong>
+                            </div>
+                        </a>
+
+                        <a href="mailto:info@diamondpowerwashing.com" class="contact-detail-item">
+                            <div class="contact-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <div>
+                                <span class="detail-label">Email</span>
+                                <strong>info@diamondpowerwashing.com</strong>
+                            </div>
+                        </a>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <div>
+                                <span class="detail-label">Service Area</span>
+                                <strong>All 5 NYC Boroughs</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                            </div>
+                            <div>
+                                <span class="detail-label">Hours</span>
+                                <strong>Mon–Sat: 7:00 AM – 6:00 PM</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name <span aria-hidden="true">*</span></label>
+                                <input type="text" id="name" name="name" required autocomplete="name" placeholder="John Doe" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-row form-row--2col">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number <span aria-hidden="true">*</span></label>
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(917) 555-0100" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service Needed</label>
+                                <select id="service" name="service" class="form-input form-select">
+                                    <option value="" disabled selected>Select a service...</option>
+                                    <option value="pressure-washing">Pressure Washing</option>
+                                    <option value="soft-washing">Soft Washing</option>
+                                    <option value="roof-cleaning">Roof Cleaning</option>
+                                    <option value="commercial">Commercial Cleaning</option>
+                                    <option value="other">Other / Not Sure</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="message" class="form-label">Tell Us About Your Project</label>
+                                <textarea id="message" name="message" placeholder="What needs to be cleaned? Location? Any details that help us give you an accurate estimate..." class="form-input form-textarea" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full btn--xl" id="submitBtn">
+                            <span class="btn-text">Send My Request</span>
+                            <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <p class="form-disclaimer">We typically respond within 2–4 hours during business hours.</p>
+                    </form>
+                    <div class="form-success" id="formSuccess" aria-live="polite" hidden>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                        <h3>Message Sent!</h3>
+                        <p>Thank you! We'll be in touch within a few hours with your free estimate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="assets /logo.png" alt="Diamond Pressure Powerwash Logo" class="footer-logo-img">
+                    <p class="footer-tagline">NYC's premier pressure washing professionals. Trusted by 500+ homeowners and businesses.</p>
+                    <div class="footer-socials" aria-label="Social media links">
+                        <a href="#" class="social-btn" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Google">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul role="list">
+                        <li><a href="#services">Pressure Washing</a></li>
+                        <li><a href="#services">Soft Washing</a></li>
+                        <li><a href="#services">Roof Cleaning</a></li>
+                        <li><a href="#services">Commercial Cleaning</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul role="list">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Get a Quote</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul role="list">
+                        <li><a href="tel:5555551234">(555) 555-1234</a></li>
+                        <li><a href="mailto:info@diamondpowerwashing.com">info@diamondpowerwashing.com</a></li>
+                        <li><span>Mon–Sat: 7AM–6PM</span></li>
+                        <li><span>All 5 NYC Boroughs</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Diamond Pressure Powerwash. All rights reserved.</p>
+                <p>Proudly serving New York City</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Floating Call Button (mobile) -->
+    <a href="tel:5555551234" class="float-call-btn" aria-label="Call us now" id="floatCallBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>Call Now</span>
+    </a>
+
+    <!-- ═══════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════ -->
     <script>
-        // Gallery data - Before and After images
-        const galleryItems = [
-            { before: 'after-2.jpg', after: 'before-2.jpg' },
-            { before: 'after-3.jpg', after: 'before-3.jpg' },
-            { before: 'after-4.jpg', after: 'before-4.jpg' },
-            { before: 'after-5.jpg', after: 'before-5.jpg' },
-            { before: 'after-6.jpg', after: 'before-6.jpg' },
-            { before: 'after-7.jpg', after: 'before-7.jpg' },
-            { before: 'after-8.jpg', after: 'before-8.jpg' },
-            { before: 'after-9.jpg', after: 'before-9.jpg' },
-            { before: 'after-10.jpg', after: 'before-10.jpg' },
-            { before: 'after-11.jpg', after: 'before-11.jpg' },
-            { before: 'after-12.jpg', after: 'before-12.jpg' }
+    (function() {
+        'use strict';
+
+        /* ─── Navigation ─── */
+        const header = document.getElementById('header');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 80) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('nav-open');
+            hamburger.classList.toggle('is-active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                hamburger.classList.remove('is-active');
+                hamburger.setAttribute('aria-expanded', false);
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ─── Smooth scroll with offset ─── */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                const offset = header.offsetHeight + 8;
+                const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            });
+        });
+
+        /* ─── Announcement bar dismiss ─── */
+        const announcementBar = document.getElementById('announcementBar');
+        // Keep it always visible — remove only on mobile after scroll
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300 && window.innerWidth < 768) {
+                announcementBar.style.transform = 'translateY(-100%)';
+            } else {
+                announcementBar.style.transform = '';
+            }
+        }, { passive: true });
+
+        /* ─── Stat counter animation ─── */
+        function animateCount(el) {
+            const target = parseInt(el.dataset.count);
+            if (!target) return;
+            const plus = el.querySelector('.hero-stat__plus');
+            const duration = 1800;
+            const start = performance.now();
+            function update(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const val = Math.round(eased * target);
+                const numNode = el.childNodes[0];
+                numNode.textContent = val.toLocaleString();
+                if (plus) el.appendChild(plus);
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    animateCount(e.target);
+                    statObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-num[data-count]').forEach(el => statObserver.observe(el));
+
+        /* ─── Gallery Build ─── */
+        const galleryData = [
+            { before: 'before-2.jpg', after: 'after-2.jpg' },
+            { before: 'before-3.jpg', after: 'after-3.jpg' },
+            { before: 'before-4.jpg', after: 'after-4.jpg' },
+            { before: 'before-5.jpg', after: 'after-5.jpg' },
+            { before: 'before-6.jpg', after: 'after-6.jpg' },
+            { before: 'before-7.jpg', after: 'after-7.jpg' },
+            { before: 'before-8.jpg', after: 'after-8.jpg' },
+            { before: 'before-9.jpg', after: 'after-9.jpg' },
+            { before: 'before-10.jpg', after: 'after-10.jpg' },
+            { before: 'before-11.jpg', after: 'after-11.jpg' },
+            { before: 'before-12.jpg', after: 'after-12.jpg' },
         ];
 
-        // Create gallery items
+        const basePath = "assets /Projects -images -before-after/";
         const galleryGrid = document.getElementById('galleryGrid');
-        
-        galleryItems.forEach((item, index) => {
-            const container = document.createElement('div');
-            container.className = 'comparison-container scroll-item';
-            container.innerHTML = `
-                <div class="comparison-wrapper">
-                    <img src="assets /Projects -images -before-after/${item.before}" 
-                         alt="Before cleaning ${index + 1}" 
-                         class="comparison-image before-image">
-                    <img src="assets /Projects -images -before-after/${item.after}" 
-                         alt="After cleaning ${index + 1}" 
-                         class="comparison-image after-image">
-                    <div class="comparison-slider">
-                        <div class="slider-handle">⟷</div>
+
+        galleryData.forEach((item, i) => {
+            const card = document.createElement('div');
+            card.className = 'comparison-card';
+            card.setAttribute('role', 'img');
+            card.setAttribute('aria-label', `Before and after cleaning result ${i + 1}`);
+            card.innerHTML = `
+                <div class="comparison-track">
+                    <img src="${basePath}${item.before}" alt="Before cleaning - project ${i+1}" class="comparison-img img-before" loading="lazy" decoding="async">
+                    <div class="comparison-after" style="clip-path: inset(0 50% 0 0)">
+                        <img src="${basePath}${item.after}" alt="After cleaning - project ${i+1}" class="comparison-img img-after" loading="lazy" decoding="async">
                     </div>
-                    <div class="comparison-label label-before">Before</div>
-                    <div class="comparison-label label-after">After</div>
+                    <div class="comparison-handle" style="left:50%">
+                        <div class="handle-line"></div>
+                        <div class="handle-circle">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg>
+                        </div>
+                        <div class="handle-line"></div>
+                    </div>
+                    <span class="comp-label comp-label--before" aria-hidden="true">Before</span>
+                    <span class="comp-label comp-label--after" aria-hidden="true">After</span>
                 </div>
             `;
-            galleryGrid.appendChild(container);
+            galleryGrid.appendChild(card);
+            initSlider(card);
         });
 
-        // Interactive comparison slider
-        document.querySelectorAll('.comparison-container').forEach(container => {
-            const wrapper = container.querySelector('.comparison-wrapper');
-            const afterImage = container.querySelector('.after-image');
-            const slider = container.querySelector('.comparison-slider');
-            let isDragging = false;
+        function initSlider(card) {
+            const track = card.querySelector('.comparison-track');
+            const afterDiv = card.querySelector('.comparison-after');
+            const handle = card.querySelector('.comparison-handle');
+            let dragging = false;
 
-            function updateSlider(e) {
-                const rect = wrapper.getBoundingClientRect();
-                let x = e.clientX || e.touches[0].clientX;
-                let position = ((x - rect.left) / rect.width) * 100;
-                position = Math.max(0, Math.min(100, position));
-                
-                afterImage.style.clipPath = `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)`;
-                slider.style.left = `${position}%`;
+            function setPosition(clientX) {
+                const rect = track.getBoundingClientRect();
+                let pct = ((clientX - rect.left) / rect.width) * 100;
+                pct = Math.max(2, Math.min(98, pct));
+                afterDiv.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+                handle.style.left = pct + '%';
             }
 
-            wrapper.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                updateSlider(e);
+            // Touch
+            track.addEventListener('touchstart', e => {
+                dragging = true;
+                setPosition(e.touches[0].clientX);
+            }, { passive: true });
+            document.addEventListener('touchmove', e => {
+                if (dragging) setPosition(e.touches[0].clientX);
+            }, { passive: true });
+            document.addEventListener('touchend', () => dragging = false);
+
+            // Mouse
+            track.addEventListener('mousedown', e => {
+                dragging = true;
+                setPosition(e.clientX);
             });
-
-            wrapper.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                updateSlider(e);
+            document.addEventListener('mousemove', e => {
+                if (dragging) setPosition(e.clientX);
             });
+            document.addEventListener('mouseup', () => dragging = false);
 
-            document.addEventListener('mousemove', (e) => {
-                if (isDragging) {
-                    updateSlider(e);
-                }
+            // Hover preview
+            track.addEventListener('mouseenter', () => {
+                if (!dragging) setPosition(track.getBoundingClientRect().left + track.offsetWidth * 0.72);
             });
-
-            document.addEventListener('touchmove', (e) => {
-                if (isDragging) {
-                    updateSlider(e);
-                }
+            track.addEventListener('mouseleave', () => {
+                if (!dragging) setPosition(track.getBoundingClientRect().left + track.offsetWidth * 0.5);
             });
+        }
 
-            document.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-
-            document.addEventListener('touchend', () => {
-                isDragging = false;
-            });
-
-            // Hover effect
-            wrapper.addEventListener('mouseenter', () => {
-                if (!isDragging) {
-                    afterImage.style.clipPath = 'polygon(0 0, 75% 0, 75% 100%, 0 100%)';
-                    slider.style.left = '75%';
-                }
-            });
-
-            wrapper.addEventListener('mouseleave', () => {
-                if (!isDragging) {
-                    afterImage.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)';
-                    slider.style.left = '50%';
-                }
-            });
-        });
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you shortly.');
-            e.target.reset();
-        });
-
-        // Smooth scroll with offset for fixed header
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        /* ─── Contact form ─── */
+        const form = document.getElementById('contactForm');
+        const success = document.getElementById('formSuccess');
+        if (form) {
+            form.addEventListener('submit', e => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                form.hidden = true;
+                success.hidden = false;
+            });
+        }
+
+        /* ─── Scroll reveal ─── */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    revealObserver.unobserve(e.target);
                 }
             });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.service-card, .about-feature, .process-step, .testimonial-card, .comparison-card').forEach(el => {
+            el.classList.add('reveal-item');
+            revealObserver.observe(el);
         });
+
+        /* ─── Float call button ─── */
+        const floatBtn = document.getElementById('floatCallBtn');
+        window.addEventListener('scroll', () => {
+            floatBtn.classList.toggle('visible', window.pageYOffset > 400);
+        }, { passive: true });
+
+    })();
     </script>
+
 </body>
 </html>
