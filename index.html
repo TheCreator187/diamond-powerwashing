@@ -790,15 +790,21 @@
                 handle.style.left = pct + '%';
             }
 
-            // Touch
+            // Touch — use non-passive so we can prevent page scroll while dragging
             track.addEventListener('touchstart', e => {
                 dragging = true;
                 setPosition(e.touches[0].clientX);
             }, { passive: true });
-            document.addEventListener('touchmove', e => {
-                if (dragging) setPosition(e.touches[0].clientX);
-            }, { passive: true });
-            document.addEventListener('touchend', () => dragging = false);
+
+            track.addEventListener('touchmove', e => {
+                if (dragging) {
+                    e.preventDefault(); // stop the page from scrolling while using the slider
+                    setPosition(e.touches[0].clientX);
+                }
+            }, { passive: false });
+
+            track.addEventListener('touchend', () => { dragging = false; });
+            track.addEventListener('touchcancel', () => { dragging = false; });
 
             // Mouse
             track.addEventListener('mousedown', e => {
