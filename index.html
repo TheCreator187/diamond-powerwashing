@@ -21,6 +21,25 @@
 <body>
 
     <!-- ═══════════════════════════════════════════
+         LOADING SCREEN
+    ═══════════════════════════════════════════ -->
+    <div id="global-loader" class="global-loader" aria-hidden="false">
+        <video class="loader-video" autoplay muted loop playsinline preload="auto">
+            <source src="assets /Project-vids/Van_Driving_Video_Generation.mp4" type="video/mp4">
+        </video>
+        <div class="loader-overlay"></div>
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="assets /diamond-logo-2026-transparent.png" alt="Diamond Powerwashing" class="loader-logo-img">
+            </div>
+            <div class="loader-text">INITIALIZING...</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
          ANNOUNCEMENT BAR
     ═══════════════════════════════════════════ -->
     <div class="announcement-bar" id="announcementBar">
@@ -888,7 +907,7 @@
             floatBtn.classList.toggle('visible', window.pageYOffset > 400);
         }, { passive: true });
 
-        /* ─── Video: show poster for 2s, then fade in video + trigger sparkles ─── */
+        /* ─── Video: show poster for 4s, then fade in video + trigger sparkles ─── */
         const heroVideo = document.querySelector('.hero-media__video');
         if (heroVideo) {
             const onReady = () => setTimeout(() => {
@@ -910,7 +929,7 @@
                         }, i * 180 + Math.random() * 100);
                     }
                 }
-            }, 2000);
+            }, 4000);
             
             if (heroVideo.readyState >= 3) { onReady(); }
             else { heroVideo.addEventListener('canplaythrough', onReady, { once: true }); }
@@ -1175,12 +1194,24 @@
 
                 requestAnimationFrame(animate);
             }
-            /* Start animation in sync with video — 2s delay matches the video fade-in */
+            /* Start animation in sync with video — 4s delay matches the video fade-in */
             setTimeout(() => {
                 canvas.style.opacity = '1';
                 requestAnimationFrame(animate);
-            }, 2000);
+            }, 4000);
         }
+
+        /* ─── Global Loader Fade Out ─── */
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('global-loader');
+            if (loader) {
+                // Minimum display time for the majestic loading screen
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    setTimeout(() => loader.remove(), 1000);
+                }, 2500);
+            }
+        });
 
     })();
 
