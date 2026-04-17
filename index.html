@@ -40,7 +40,7 @@
     <header id="header" role="banner">
         <nav class="nav-inner" role="navigation" aria-label="Main navigation">
             <a href="#home" class="nav-logo" aria-label="Diamond Pressure Powerwash Home">
-                <img src="assets /logo.png" alt="Diamond Pressure Powerwash" class="logo-img">
+                <img src="assets /diamond-logo-2026-transparent.png" alt="Diamond Pressure Powerwash" class="logo-img">
                 <div class="logo-text-group">
                     <span class="logo-primary">Diamond</span>
                     <span class="logo-secondary">Pressure Powerwash</span>
@@ -99,7 +99,9 @@
 
                 <h1 id="hero-title" class="hero-title">
                     <span class="title-word">No Diamond</span>
-                    <span class="title-word title-accent">Sparkles</span>
+                    <span class="title-word" id="sparkles-word" style="position:relative; display:inline-block;">
+                        <span class="title-accent">Sparkles</span>
+                    </span>
                     <span class="title-word">Without Pressure</span>
                 </h1>
 
@@ -583,7 +585,7 @@
         <div class="footer-inner">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="assets /logo.png" alt="Diamond Pressure Powerwash Logo" class="footer-logo-img">
+                    <img src="assets /diamond-logo-2026-transparent.png" alt="Diamond Pressure Powerwash Logo" class="footer-logo-img">
                     <p class="footer-tagline">NYC's premier pressure washing professionals. Trusted by 500+ homeowners and businesses.</p>
                     <div class="footer-socials" aria-label="Social media links">
                         <a href="#" class="social-btn" aria-label="Facebook">
@@ -886,20 +888,51 @@
             floatBtn.classList.toggle('visible', window.pageYOffset > 400);
         }, { passive: true });
 
-        /* ─── Video: fade in once loaded ─── */
+        /* ─── Video: show poster for 2s, then fade in video + trigger sparkles ─── */
         const heroVideo = document.querySelector('.hero-media__video');
         if (heroVideo) {
-            const onReady = () => heroVideo.classList.add('is-ready');
+            const onReady = () => setTimeout(() => {
+                heroVideo.classList.add('is-ready');
+                
+                /* Title Sparkle Effect */
+                const target = document.getElementById('sparkles-word');
+                if (target) {
+                    for (let i = 0; i < 6; i++) {
+                        setTimeout(() => {
+                            const sp = document.createElement('span');
+                            sp.className = 'text-sparkle';
+                            sp.innerHTML = '✦'; // star character
+                            sp.style.left = (Math.random() * 90) + '%';
+                            sp.style.top = (Math.random() * 80 - 10) + '%';
+                            target.appendChild(sp);
+                            // clean up
+                            setTimeout(() => sp.remove(), 1200);
+                        }, i * 180 + Math.random() * 100);
+                    }
+                }
+            }, 2000);
+            
             if (heroVideo.readyState >= 3) { onReady(); }
             else { heroVideo.addEventListener('canplaythrough', onReady, { once: true }); }
         }
 
-        /* ─── Water-drop Particle System ─── */
+        /* ═══════════════════════════════════════════════
+           WET GLASS / CINEMATIC WATER SCREEN EFFECT
+           Simulates: water on phone screen or car windshield
+           - Stuck glass drops (refraction + specular highlight)
+           - Falling streaks with motion blur
+           - Splash rings on impact
+           - Mouse-reactive ripple displacement
+        ═══════════════════════════════════════════════ */
         const canvas = document.getElementById('heroParticles');
         if (canvas) {
             const ctx = canvas.getContext('2d');
-            let W, H, drops = [];
+            let W, H;
+            /* Canvas starts invisible — fades in with the video */
+            canvas.style.opacity = '0';
+            canvas.style.transition = 'opacity 1.8s ease';
 
+            /* ─── Resize ─── */
             function resize() {
                 const hero = document.getElementById('home');
                 W = canvas.width  = hero.offsetWidth;
@@ -908,45 +941,245 @@
             resize();
             window.addEventListener('resize', resize, { passive: true });
 
-            function newDrop() {
+            /* ─── Mouse position for interactive ripple ─── */
+            let mouseX = W / 2, mouseY = H / 2;
+            canvas.parentElement.addEventListener('mousemove', e => {
+                const r = canvas.getBoundingClientRect();
+                mouseX = e.clientX - r.left;
+                mouseY = e.clientY - r.top;
+            }, { passive: true });
+
+            /* ─── SPLASH RINGS ─── */
+            const splashes = [];
+            function addSplash(x, y, r) {
+                splashes.push({ x, y, r: r * 0.5, maxR: r * 6 + 20, alpha: 0.55, speed: r * 0.4 + 1.2 });
+            }
+            function drawSplashes() {
+                for (let i = splashes.length - 1; i >= 0; i--) {
+                    const s = splashes[i];
+                    ctx.beginPath();
+                    ctx.ellipse(s.x, s.y, s.r * 1.4, s.r * 0.45, 0, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(180,240,255,${s.alpha})`;
+                    ctx.lineWidth = Math.max(0.3, 1.5 - s.r / s.maxR);
+                    ctx.stroke();
+                    s.r += s.speed;
+                    s.alpha -= 0.012;
+                    if (s.alpha <= 0) splashes.splice(i, 1);
+                }
+            }
+
+            /* ─── STUCK GLASS DROPS (cling to screen) ─── */
+            const glassDrops = [];
+            function newGlassDrop() {
+                const r = 4 + Math.random() * 18;
                 return {
                     x: Math.random() * W,
-                    y: -10 - Math.random() * 60,
-                    r: 1.2 + Math.random() * 2.2,
-                    speed: 0.6 + Math.random() * 1.4,
-                    opacity: 0.08 + Math.random() * 0.22,
-                    tail: 6 + Math.random() * 12
+                    y: Math.random() * H * 0.85,
+                    r,
+                    vy: 0,
+                    sliding: Math.random() < 0.35,  // some drops slide down slowly
+                    slideSpeed: 0.15 + Math.random() * 0.55,
+                    alpha: 0.55 + Math.random() * 0.4,
+                    wobble: Math.random() * Math.PI * 2,
+                    life: 1.0,
+                    lifeSpeed: 0.0005 + Math.random() * 0.0012,
+                    trail: [],
+                    trailLen: Math.floor(r * 1.8)
                 };
             }
 
-            for (let i = 0; i < 55; i++) {
-                const d = newDrop();
-                d.y = Math.random() * H;
-                drops.push(d);
+            /* Pre-populate glass drops spread across-screen */
+            for (let i = 0; i < 38; i++) {
+                const d = newGlassDrop();
+                glassDrops.push(d);
             }
 
-            function animateDrops() {
-                ctx.clearRect(0, 0, W, H);
-                drops.forEach((d, i) => {
-                    ctx.save();
-                    const grad = ctx.createLinearGradient(d.x, d.y - d.tail, d.x, d.y + d.r * 2);
-                    grad.addColorStop(0,   `rgba(34,211,238,0)`);
-                    grad.addColorStop(0.6, `rgba(34,211,238,${d.opacity * 0.5})`);
-                    grad.addColorStop(1,   `rgba(34,211,238,${d.opacity})`);
-                    ctx.beginPath();
-                    ctx.moveTo(d.x, d.y - d.tail);
-                    ctx.lineTo(d.x - d.r * 0.5, d.y);
-                    ctx.arc(d.x, d.y + d.r, d.r, Math.PI, 0);
-                    ctx.lineTo(d.x + d.r * 0.5, d.y - d.tail);
-                    ctx.fillStyle = grad;
-                    ctx.fill();
-                    ctx.restore();
-                    d.y += d.speed;
-                    if (d.y > H + 20) drops[i] = newDrop();
-                });
-                requestAnimationFrame(animateDrops);
+            function drawGlassDrop(d) {
+                const { x, y, r, alpha } = d;
+                ctx.save();
+
+                /* ── Layer 1: Contact shadow (soft ellipse below drop) ── */
+                ctx.beginPath();
+                ctx.ellipse(x + r * 0.08, y + r * 0.82, r * 1.1, r * 0.28, 0, 0, Math.PI * 2);
+                const shadowG = ctx.createRadialGradient(x, y + r * 0.82, 0, x, y + r * 0.82, r * 1.1);
+                shadowG.addColorStop(0,   `rgba(0,10,25,${alpha * 0.55})`);
+                shadowG.addColorStop(0.6, `rgba(0,10,25,${alpha * 0.18})`);
+                shadowG.addColorStop(1,   `rgba(0,0,0,0)`);
+                ctx.fillStyle = shadowG;
+                ctx.fill();
+
+                /* ── Layer 2: IOR body — off-center radial simulates light bending through water ── */
+                const bodyGrad = ctx.createRadialGradient(
+                    x - r * 0.22, y - r * 0.18, r * 0.04,
+                    x + r * 0.06, y + r * 0.06, r * 1.02
+                );
+                bodyGrad.addColorStop(0,    `rgba(215,245,255,${alpha * 0.60})`);
+                bodyGrad.addColorStop(0.18, `rgba(170,225,248,${alpha * 0.38})`);
+                bodyGrad.addColorStop(0.45, `rgba(90,185,230,${alpha * 0.22})`);
+                bodyGrad.addColorStop(0.75, `rgba(28,110,175,${alpha * 0.14})`);
+                bodyGrad.addColorStop(1,    `rgba(8,50,110,${alpha * 0.05})`);
+                ctx.beginPath();
+                ctx.ellipse(x, y, r, r * 0.90, 0, 0, Math.PI * 2);
+                ctx.fillStyle = bodyGrad;
+                ctx.fill();
+
+                /* ── Layer 3: Dark meniscus rim — the darkened edge of a real water drop ── */
+                ctx.beginPath();
+                ctx.ellipse(x, y, r, r * 0.90, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(5,40,90,${alpha * 0.30})`;
+                ctx.lineWidth = r * 0.12;
+                ctx.stroke();
+
+                /* ── Layer 4: Caustic inner bloom — warm glow at refraction focus ── */
+                const causticG = ctx.createRadialGradient(
+                    x + r * 0.12, y + r * 0.18, 0,
+                    x + r * 0.12, y + r * 0.18, r * 0.55
+                );
+                causticG.addColorStop(0,   `rgba(180,235,255,${alpha * 0.22})`);
+                causticG.addColorStop(0.5, `rgba(100,200,240,${alpha * 0.08})`);
+                causticG.addColorStop(1,   `rgba(0,0,0,0)`);
+                ctx.beginPath();
+                ctx.ellipse(x + r * 0.12, y + r * 0.18, r * 0.55, r * 0.42, 0, 0, Math.PI * 2);
+                ctx.fillStyle = causticG;
+                ctx.fill();
+
+                /* ── Layer 5: Primary specular crescent (top-left arc) ── */
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(x, y, r * 0.90, 0, Math.PI * 2);
+                ctx.clip();
+                ctx.beginPath();
+                ctx.arc(x - r * 0.18, y - r * 0.18, r * 0.75, -2.6, -0.25);
+                ctx.strokeStyle = `rgba(240,252,255,${alpha * 0.72})`;
+                ctx.lineWidth = r * 0.18;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                ctx.restore();
+
+                /* ── Layer 6: Primary specular dot (bright hot-spot) ── */
+                const spec1 = ctx.createRadialGradient(
+                    x - r * 0.32, y - r * 0.34, 0,
+                    x - r * 0.32, y - r * 0.34, r * 0.30
+                );
+                spec1.addColorStop(0,   `rgba(255,255,255,${alpha * 0.98})`);
+                spec1.addColorStop(0.4, `rgba(230,248,255,${alpha * 0.50})`);
+                spec1.addColorStop(1,   `rgba(255,255,255,0)`);
+                ctx.beginPath();
+                ctx.ellipse(x - r * 0.30, y - r * 0.33, r * 0.26, r * 0.19, -0.6, 0, Math.PI * 2);
+                ctx.fillStyle = spec1;
+                ctx.fill();
+
+                /* ── Layer 7: Tiny secondary specular micro-dot (bottom-right glint) ── */
+                const spec2 = ctx.createRadialGradient(
+                    x + r * 0.42, y + r * 0.38, 0,
+                    x + r * 0.42, y + r * 0.38, r * 0.14
+                );
+                spec2.addColorStop(0,   `rgba(255,255,255,${alpha * 0.55})`);
+                spec2.addColorStop(1,   `rgba(255,255,255,0)`);
+                ctx.beginPath();
+                ctx.ellipse(x + r * 0.42, y + r * 0.38, r * 0.12, r * 0.09, 0.8, 0, Math.PI * 2);
+                ctx.fillStyle = spec2;
+                ctx.fill();
+
+                ctx.restore();
             }
-            animateDrops();
+
+            function drawSlideTrail(d) {
+                if (!d.sliding || d.trail.length < 2) return;
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(d.trail[0].x, d.trail[0].y);
+                for (let i = 1; i < d.trail.length; i++) {
+                    ctx.lineTo(d.trail[i].x, d.trail[i].y);
+                }
+                const trailGrad = ctx.createLinearGradient(d.trail[0].x, d.trail[0].y, d.x, d.y);
+                trailGrad.addColorStop(0, `rgba(140,210,240,0)`);
+                trailGrad.addColorStop(1, `rgba(140,210,240,${d.alpha * 0.28})`);
+                ctx.strokeStyle = trailGrad;
+                ctx.lineWidth = d.r * 0.45;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            /* (streaks removed — glass drops only) */
+
+            /* ─── MOUSE RIPPLE ─── */
+            let rippleRing = { r: 0, alpha: 0, x: W/2, y: H/2 };
+            canvas.parentElement.addEventListener('click', e => {
+                const rect = canvas.getBoundingClientRect();
+                rippleRing = { r: 0, alpha: 0.7, x: e.clientX - rect.left, y: e.clientY - rect.top };
+            });
+
+            /* ─── MAIN ANIMATION LOOP ─── */
+            let lastSplashTime = 0;
+            function animate(ts) {
+                ctx.clearRect(0, 0, W, H);
+
+                /* Occasionally spawn new glass drops if old ones fade */
+                if (glassDrops.length < 38 && Math.random() < 0.02) {
+                    glassDrops.push(newGlassDrop());
+                }
+
+                /* Draw glass drops */
+                for (let i = glassDrops.length - 1; i >= 0; i--) {
+                    const d = glassDrops[i];
+                    drawSlideTrail(d);
+                    drawGlassDrop(d);
+
+                    /* sliding physics */
+                    if (d.sliding) {
+                        d.trail.push({ x: d.x, y: d.y });
+                        if (d.trail.length > d.trailLen) d.trail.shift();
+                        d.vy += 0.015;
+                        d.y += d.vy + d.slideSpeed;
+                        d.wobble += 0.04;
+                        d.x += Math.sin(d.wobble) * 0.25;
+
+                        if (d.y > H + d.r) {
+                            addSplash(d.x, H - 4, d.r);
+                            glassDrops.splice(i, 1);
+                        }
+                    } else {
+                        /* slight wobble for stuck drops */
+                        d.wobble += 0.008;
+                        d.x += Math.sin(d.wobble) * 0.06;
+                        /* very slowly gather mass and begin sliding */
+                        d.r += 0.002;
+                        if (d.r > 26 && !d.sliding) { d.sliding = true; }
+                        d.life -= d.lifeSpeed;
+                        if (d.life <= 0) {
+                            glassDrops.splice(i, 1);
+                        } else {
+                            d.alpha = d.life * 0.95;
+                        }
+                    }
+                }
+
+
+
+
+                /* Splash rings */
+                drawSplashes();
+
+                /* Mouse ripple ring */
+                if (rippleRing.alpha > 0) {
+                    ctx.beginPath();
+                    ctx.ellipse(rippleRing.x, rippleRing.y, rippleRing.r * 1.6, rippleRing.r * 0.55, 0, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(150,230,255,${rippleRing.alpha})`;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    rippleRing.r += 4;
+                    rippleRing.alpha -= 0.025;
+                }
+
+                requestAnimationFrame(animate);
+            }
+            /* Start animation in sync with video — 2s delay matches the video fade-in */
+            setTimeout(() => {
+                canvas.style.opacity = '1';
+                requestAnimationFrame(animate);
+            }, 2000);
         }
 
     })();

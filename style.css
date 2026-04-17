@@ -364,9 +364,9 @@ header.scrolled {
 .nav-logo:hover { opacity: 0.85; }
 
 .logo-img {
-  height: 52px;
+  height: 84px;
   width: auto;
-  filter: brightness(1.05) drop-shadow(0 2px 12px var(--cyan-glow));
+  filter: brightness(1.15) drop-shadow(0 2px 16px var(--cyan-glow));
   object-fit: contain;
 }
 
@@ -500,7 +500,7 @@ header.scrolled {
   object-position: center;
   /* video fades in once ready */
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 1.8s ease;
 }
 
 .hero-media__video.is-ready { opacity: 1; }
@@ -615,6 +615,26 @@ header.scrolled {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   filter: drop-shadow(0 0 24px rgba(34,211,238,0.5));
+  position: relative;
+  display: inline-block;
+}
+
+/* ── Star-Burst Sparkle Glints ── */
+.text-sparkle {
+  position: absolute;
+  pointer-events: none;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #fff;
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  text-shadow: 0 0 12px rgba(34,211,238,0.8);
+  animation: starBurst 1s forwards cubic-bezier(0.1, 0.8, 0.2, 1);
+}
+
+@keyframes starBurst {
+  0% { opacity: 0; transform: scale(0) rotate(-45deg); }
+  30% { opacity: 1; transform: scale(1.4) rotate(0deg); }
+  100% { opacity: 0; transform: scale(0.5) rotate(45deg); }
 }
 
 @keyframes titleReveal {
@@ -792,6 +812,56 @@ header.scrolled {
 
 
 
+
+/* ─── WET GLASS SCREEN OVERLAY ─── */
+/* Gives the hero a "wet phone / monitor" look with edge moisture and drop shadows */
+
+/* Outer moisture vignette — darker, blurred edges like a foggy screen */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 0% 0%,   rgba(0,20,40,0.55) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 0%,  rgba(0,20,40,0.45) 0%, transparent 38%),
+    radial-gradient(ellipse at 0% 100%,  rgba(0,20,40,0.60) 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 100%,rgba(0,20,40,0.55) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,30,60,0.50) 0%, transparent 30%);
+}
+
+/* Animated edge moisture blobs — subtle breathing fog in screen corners */
+.hero-media::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 2% 5%,    rgba(60,160,220,0.10) 0%, transparent 25%),
+    radial-gradient(circle at 97% 8%,   rgba(40,140,200,0.08) 0%, transparent 22%),
+    radial-gradient(circle at 4% 95%,   rgba(50,150,210,0.12) 0%, transparent 28%),
+    radial-gradient(circle at 96% 93%,  rgba(60,160,220,0.10) 0%, transparent 25%);
+  animation: fogPulse 6s ease-in-out infinite;
+  filter: blur(18px);
+}
+
+@keyframes fogPulse {
+  0%,  100% { opacity: 0.6; transform: scale(1); }
+  50%        { opacity: 1.0; transform: scale(1.04); }
+}
+
+/* Hero canvas on top of the wet-glass overlay layer */
+.hero-particles {
+  z-index: 3;
+}
+
+/* Screen-border shimmer ring — thin glowing border like a wet phone bezel */
+.hero-content {
+  /* ensure content is above the wet-glass layers */
+  z-index: 4;
+}
 
 /* ─── MARQUEE STRIP ─── */
 .marquee-strip {
@@ -1697,11 +1767,11 @@ a.contact-detail-item:hover {
 }
 
 .footer-logo-img {
-  height: 56px;
+  height: 96px;
   width: auto;
   object-fit: contain;
   margin-bottom: 1rem;
-  filter: brightness(1.05);
+  filter: brightness(1.15) drop-shadow(0 4px 12px rgba(34,211,238,0.2));
 }
 
 .footer-tagline {
