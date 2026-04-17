@@ -62,22 +62,34 @@
     </header>
 
     <!-- ═══════════════════════════════════════════
-         HERO SECTION — Clean Split Layout
-    ═══════════════════════════════════════════ -->
+         HERO SECTION — 2026 Cinematic Fullscreen
+     ═══════════════════════════════════════════ -->
     <section id="home" class="hero" aria-labelledby="hero-title">
 
-        <!-- Animated bg -->
-        <div class="hero-bg" aria-hidden="true">
-            <div class="hero-bg__orb hero-bg__orb--1"></div>
-            <div class="hero-bg__orb hero-bg__orb--2"></div>
-            <div class="hero-bg__orb hero-bg__orb--3"></div>
-            <div class="hero-bg__grid"></div>
+        <!-- Fullscreen video/image background -->
+        <div class="hero-media" aria-hidden="true">
+            <img class="hero-media__poster" src="assets /main-effect/Main-pic.jpg" alt="">
+            <video
+                class="hero-media__video"
+                autoplay muted loop playsinline
+                preload="auto"
+                poster="assets /main-effect/Main-pic.jpg"
+            >
+                <source src="assets /main-effect/VID_20260417_122920.mp4" type="video/mp4">
+                <source src="assets /main-effect/VID_20260417_122922.mp4" type="video/mp4">
+            </video>
+            <div class="hero-media__overlay"></div>
+            <!-- Animated scanline shimmer -->
+            <div class="hero-media__shimmer" aria-hidden="true"></div>
         </div>
 
-        <div class="hero-split">
+        <!-- Water-drop particles canvas -->
+        <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
 
-            <!-- LEFT: Content -->
-            <div class="hero-left">
+        <!-- Main hero content -->
+        <div class="hero-content" role="main">
+            <div class="hero-inner container">
+
                 <div class="hero-eyebrow">
                     <span class="eyebrow-pill">
                         <span class="eyebrow-dot"></span>
@@ -87,39 +99,30 @@
 
                 <h1 id="hero-title" class="hero-title">
                     <span class="title-word">No Diamond</span>
-                    <span class="title-word title-accent">sparkles</span>
-                    <span class="title-word">without pressure</span>
+                    <span class="title-word title-accent">Sparkles</span>
+                    <span class="title-word">Without Pressure</span>
                 </h1>
 
-                <p class="hero-subtitle">Professional pressure washing, soft washing &amp; commercial cleaning across all five New York City boroughs. Built on trust, quality &amp; integrity.</p>
+                <p class="hero-subtitle">Professional pressure &amp; soft washing across all five NYC boroughs.<br>Built on trust, quality &amp; integrity.</p>
 
                 <div class="hero-trust">
-                    <div class="trust-badge">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        5-Star Rated
-                    </div>
-                    <div class="trust-badge">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                        Licensed &amp; Insured
-                    </div>
-                    <div class="trust-badge">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Satisfaction Guaranteed
-                    </div>
+                    <div class="trust-badge"><svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>5-Star Rated</div>
+                    <div class="trust-badge"><svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>Licensed &amp; Insured</div>
+                    <div class="trust-badge"><svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Satisfaction Guaranteed</div>
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn--primary btn--xl" id="hero-cta">
+                    <a href="#contact" class="btn btn--primary btn--xl btn--glow" id="hero-cta">
                         Get My Free Estimate
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="tel:6462353019" class="btn btn--ghost btn--xl">
+                    <a href="tel:6462353019" class="btn btn--glass btn--xl">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         (646) 235-3019
                     </a>
                 </div>
 
-                <!-- Inline stats -->
+                <!-- Stats bar -->
                 <div class="hero-stats-inline" aria-label="Company statistics">
                     <div class="hero-stat-inline">
                         <span class="stat-num" data-count="500">500<span>+</span></span>
@@ -138,42 +141,42 @@
                     <div class="stat-sep" aria-hidden="true"></div>
                     <div class="hero-stat-inline">
                         <span class="stat-num">5</span>
-                        <span class="stat-lbl">Boroughss</span>
+                        <span class="stat-lbl">Boroughs</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- RIGHT: Photo showcase -->
-            <div class="hero-right" aria-hidden="true">
-                <div class="hero-photo-wrap">
-                    <div class="hero-photo-frame">
-                        <img
-                            src="assets /Projects -images -before-after/after-9.jpg"
-                            alt="Professional pressure washing result — clean driveway"
-                            class="hero-photo"
-                            loading="eager"
-                            decoding="async"
-                        >
-                        <!-- After badge -->
-                        <div class="hero-photo-badge">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                            Spotless results
-                        </div>
-                    </div>
-                    <!-- Floating accent card -->
-                    <div class="hero-accent-card">
-                        <img
-                            src="assets /Projects -images -before-after/after-4.jpg"
-                            alt="Another cleaning result"
-                            class="hero-accent-img"
-                            loading="lazy"
-                        >
-                    </div>
-                </div>
+        <!-- Scroll indicator -->
+        <div class="hero-scroll-indicator" aria-hidden="true">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
             </div>
-
+            <span>Scroll</span>
         </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════
+         MARQUEE STRIP
+     ═══════════════════════════════════════════ -->
+    <div class="marquee-strip" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Pressure Washing</span><span class="marquee-dot">◆</span>
+            <span>Soft Washing</span><span class="marquee-dot">◆</span>
+            <span>Roof Cleaning</span><span class="marquee-dot">◆</span>
+            <span>Commercial Cleaning</span><span class="marquee-dot">◆</span>
+            <span>Free Estimates</span><span class="marquee-dot">◆</span>
+            <span>All 5 Boroughs</span><span class="marquee-dot">◆</span>
+            <span>Licensed &amp; Insured</span><span class="marquee-dot">◆</span>
+            <span>Pressure Washing</span><span class="marquee-dot">◆</span>
+            <span>Soft Washing</span><span class="marquee-dot">◆</span>
+            <span>Roof Cleaning</span><span class="marquee-dot">◆</span>
+            <span>Commercial Cleaning</span><span class="marquee-dot">◆</span>
+            <span>Free Estimates</span><span class="marquee-dot">◆</span>
+            <span>All 5 Boroughs</span><span class="marquee-dot">◆</span>
+            <span>Licensed &amp; Insured</span><span class="marquee-dot">◆</span>
+        </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════
          SERVICES SECTION
@@ -883,7 +886,71 @@
             floatBtn.classList.toggle('visible', window.pageYOffset > 400);
         }, { passive: true });
 
+        /* ─── Video: fade in once loaded ─── */
+        const heroVideo = document.querySelector('.hero-media__video');
+        if (heroVideo) {
+            const onReady = () => heroVideo.classList.add('is-ready');
+            if (heroVideo.readyState >= 3) { onReady(); }
+            else { heroVideo.addEventListener('canplaythrough', onReady, { once: true }); }
+        }
+
+        /* ─── Water-drop Particle System ─── */
+        const canvas = document.getElementById('heroParticles');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let W, H, drops = [];
+
+            function resize() {
+                const hero = document.getElementById('home');
+                W = canvas.width  = hero.offsetWidth;
+                H = canvas.height = hero.offsetHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize, { passive: true });
+
+            function newDrop() {
+                return {
+                    x: Math.random() * W,
+                    y: -10 - Math.random() * 60,
+                    r: 1.2 + Math.random() * 2.2,
+                    speed: 0.6 + Math.random() * 1.4,
+                    opacity: 0.08 + Math.random() * 0.22,
+                    tail: 6 + Math.random() * 12
+                };
+            }
+
+            for (let i = 0; i < 55; i++) {
+                const d = newDrop();
+                d.y = Math.random() * H;
+                drops.push(d);
+            }
+
+            function animateDrops() {
+                ctx.clearRect(0, 0, W, H);
+                drops.forEach((d, i) => {
+                    ctx.save();
+                    const grad = ctx.createLinearGradient(d.x, d.y - d.tail, d.x, d.y + d.r * 2);
+                    grad.addColorStop(0,   `rgba(34,211,238,0)`);
+                    grad.addColorStop(0.6, `rgba(34,211,238,${d.opacity * 0.5})`);
+                    grad.addColorStop(1,   `rgba(34,211,238,${d.opacity})`);
+                    ctx.beginPath();
+                    ctx.moveTo(d.x, d.y - d.tail);
+                    ctx.lineTo(d.x - d.r * 0.5, d.y);
+                    ctx.arc(d.x, d.y + d.r, d.r, Math.PI, 0);
+                    ctx.lineTo(d.x + d.r * 0.5, d.y - d.tail);
+                    ctx.fillStyle = grad;
+                    ctx.fill();
+                    ctx.restore();
+                    d.y += d.speed;
+                    if (d.y > H + 20) drops[i] = newDrop();
+                });
+                requestAnimationFrame(animateDrops);
+            }
+            animateDrops();
+        }
+
     })();
+
     </script>
 
 </body>
