@@ -203,6 +203,23 @@ ul[role="list"] {
   100% { width: 100%; }
 }
 
+@media (max-width: 768px) {
+  .loader-video {
+    mask-image: radial-gradient(ellipse at center, black 35%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 95%);
+  }
+  .loader-logo-img {
+    width: 90px;
+  }
+  .loader-progress {
+    width: 150px;
+  }
+  .loader-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+  }
+}
+
 /* ─── UTILITIES ─── */
 .container {
   width: 100%;
