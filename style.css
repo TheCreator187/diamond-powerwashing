@@ -205,8 +205,9 @@ ul[role="list"] {
 
 @media (max-width: 768px) {
   .loader-video {
-    mask-image: radial-gradient(ellipse at center, black 35%, transparent 95%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 95%);
+    object-fit: contain;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
   .loader-logo-img {
     width: 90px;
